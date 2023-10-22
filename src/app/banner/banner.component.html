@@ -1,0 +1,27 @@
+<div class="weather-banner" [ngClass]="{'weather-banner-back': bannerContext!=='home'}">
+  <div class="weather-banner--menu desktop-hide mobile-flex">
+    <button *ngIf="bannerContext==='home'" matSuffix mat-icon-button aria-label="menu" (click)="onToggleDrawer('menu')">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button *ngIf="bannerContext!=='home'"  mat-icon-button aria-label="back" (click)="onBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <div class="weather-banner--logo">
+    <img *ngIf="bannerContext==='home'" [routerLink]="['home']" src="/assets/images/logo_web.png" alt="logo" />
+    <span class="weather-banner--logo-text desktop-hide mobile-flex" *ngIf="bannerContext!=='home'">{{title}}</span>
+  </div>
+  <div class="weather-banner--search mobile-hide">
+    <mat-form-field class="weather-search--field" appearance="outline">
+      <input matInput type="text" placeholder="Search city" [(ngModel)]="query" (keyup)="onKeyUp($event)">
+      <button matSuffix mat-icon-button aria-label="search" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="weather-banner--search desktop-hide mobile-flex">
+    <button matSuffix mat-icon-button aria-label="search" (click)="onToggleDrawer('search')">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</div>

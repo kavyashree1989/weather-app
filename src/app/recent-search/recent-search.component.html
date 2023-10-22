@@ -1,0 +1,8 @@
+<div class="search-list">
+  <div *ngIf="recentSearch.length" class="search-list--summary">
+    <div class="search-list--summary-count">You recently searched for</div>
+    <a class="search-list--summary-action" (click)="onClearAll()">Clear All</a>
+  </div>
+  <weather-list message="No Recent Search" [favMap]="favMap" (favChange)="manageFavourite($event)" [weatherList]="recentSearch"/>
+</div>
+

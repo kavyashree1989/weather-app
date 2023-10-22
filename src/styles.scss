@@ -1,0 +1,124 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-app-primary: mat.define-palette(mat.$yellow-palette);
+$my-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$my-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-app-theme: mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+body{
+  background-image: url("/assets/images/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  overflow: auto;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {margin:0 auto; font-family: Roboto, "Helvetica Neue", sans-serif; width: 1024px; }
+
+.mat-mdc-form-field-subscript-wrapper{
+  display: none;
+}
+
+.mat-mdc-tab-header{
+  border-bottom: 1px solid rgba(255,255,255, .3);
+}
+
+.weather-search--field{
+
+  .mat-mdc-input-element{
+    position: relative;
+    top:2px;
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: #fff !important;
+    }
+  }
+  background: rgba(255,255,255,.2);
+  border-radius:4px;
+
+  .mat-icon{
+    color:#fff;
+  }
+
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input{
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .mat-mdc-form-field-infix{
+    min-height: 48px;
+  }
+
+  .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix{
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing{
+    border-color:  rgba(255,255,255,.6);
+  }
+}
+
+.weather-drawer--container{
+  &.mat-drawer-container{
+    background: transparent;
+    height: 100%;
+  }
+
+}
+.desktop-hide{
+  display: none;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+  body{
+    width: 100%;
+  }
+
+  .mobile-hide{
+    display: none;
+  }
+
+  .mobile-flex{
+    display: flex;
+  }
+}

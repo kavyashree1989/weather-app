@@ -1,0 +1,87 @@
+<div class="weather-home" *ngIf="weather.isUpdate">
+
+  <div class="weather-home--date desktop-hide mobile-flex">{{dateTimeNow | date:'fullDate'  }}<span class="weather-today--time">{{dateTimeNow | date:'h:mm a'}}</span></div>
+
+  <div class="weather-home--city">
+    {{weather.city}}, {{weather.country}}
+  </div>
+
+  <div class="weather-home--favourite" [ngClass]="{'weather-home--favourite-added': !!favMap[weather.city]}">
+    <button matSuffix mat-icon-button aria-label="favourite" (click)="manageFavourite()">
+      <mat-icon>{{!!favMap[weather.city] ? "favorite" : "favorite_border"}}</mat-icon>
+    </button>
+    <a class="weather-home--text" (click)="manageFavourite()">{{!!favMap[weather.city] ? "Added to favourite" : "Add to favourite"}}</a>
+  </div>
+
+  <div class="weather-home--status">
+    <div class="weather-home--status-icon">
+      <img [src]="iconMap[weather.icon]" />
+    </div>
+
+    <div class="weather-home--status-tempature">
+      <div class="weather-home--status-tempature-text">{{weather.getTemprature(format)}}</div>
+      <div class="weather-home--status-tempature-format">
+        <div class="weather-home--status-tempature-format-item" [ngClass]="{'selected':format==='C' }" (click)="setFormat('C')">
+          <sup>o</sup>
+          <span>C</span>
+        </div>
+        <div class="weather-home--status-tempature-format-item" [ngClass]="{'selected':format==='F' }" (click)="setFormat('F')">
+          <sup>o</sup>
+          <span>F</span>
+        </div>
+      </div>
+    </div>
+    <div class="weather-home--status-description">
+      {{weather.description |titlecase}}
+    </div>
+  </div>
+
+  <div class="weather-home--details">
+    <div class="weather-home--details-item">
+        <div class="weather-home--details-item--icon">
+            <img src="/assets/images/weather/icon_temperature_info.png" />
+        </div>
+        <div class="weather-home--details-item--content">
+          <div class="weather-home--details-item--content-title">Min - Max</div>
+          <div class="weather-home--details-item--content-value">
+            {{weather.getTemprature(format, 'min')}}<sup>o</sup> -  {{weather.getTemprature(format, 'max')}}<sup>o</sup></div>
+        </div>
+    </div>
+    <div class="weather-home--details-item">
+      <div class="weather-home--details-item--icon">
+        <img src="/assets/images/weather/icon_precipitation_info.png" />
+      </div>
+      <div class="weather-home--details-item--content">
+        <div class="weather-home--details-item--content-title">Precipitation</div>
+        <div class="weather-home--details-item--content-value"> {{weather.precipitation}}%</div>
+      </div>
+    </div>
+    <div class="weather-home--details-item">
+      <div class="weather-home--details-item--icon">
+        <img src="/assets/images/weather/icon_humidity_info.png" />
+      </div>
+      <div class="weather-home--details-item--content">
+        <div class="weather-home--details-item--content-title">Humidity</div>
+        <div class="weather-home--details-item--content-value"> {{weather.humidity}}%</div>
+      </div>
+    </div>
+    <div class="weather-home--details-item">
+      <div class="weather-home--details-item--icon">
+        <img src="/assets/images/weather/icon_wind_info.png" />
+      </div>
+      <div class="weather-home--details-item--content">
+        <div class="weather-home--details-item--content-title">Wind</div>
+        <div class="weather-home--details-item--content-value"> {{weather.wind}} mph</div>
+      </div>
+    </div>
+    <div class="weather-home--details-item">
+      <div class="weather-home--details-item--icon">
+        <img src="/assets/images/weather/icon_visibility_info.png" />
+      </div>
+      <div class="weather-home--details-item--content">
+        <div class="weather-home--details-item--content-title">Visibility</div>
+        <div class="weather-home--details-item--content-value"> {{weather.visibility}} mph</div>
+      </div>
+    </div>
+  </div>
+</div>

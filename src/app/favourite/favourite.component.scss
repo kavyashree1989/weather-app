@@ -1,0 +1,13 @@
+.favourite-list--summary{
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  margin-bottom:20px;
+  .favourite-list--summary-count{
+    flex:1;
+  }
+
+  .favourite-list--summary-action{
+    cursor: pointer;
+  }
+}

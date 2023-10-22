@@ -1,0 +1,141 @@
+.weather-home{
+  margin: 40px 0;
+
+
+  .weather-home--city{
+    font-size: 20px;
+    font-weight:400 ;
+    margin-bottom: 15px;
+  }
+
+  .weather-home--favourite{
+    display: flex;
+    align-items: center;
+    margin-left: -12px;
+  }
+
+  .weather-home--text{
+    font-size: 13px;
+    margin-left: -5px;
+    cursor: pointer;
+  }
+
+  .weather-home--favourite-added{
+    color:#FAD05B;
+  }
+
+  .weather-home--status{
+    text-align: center;
+    margin: 30px 0 60px 0;
+  }
+
+  .weather-home--details{
+    border-top:1px solid rgba(255,255,255, .3);
+  }
+
+
+  .weather-home--status-tempature{
+    display: flex;
+    justify-content:center;
+    margin: 30px 0;
+    gap:8px;
+  }
+
+  .weather-home--status-tempature-text{
+    font-size: 75px;
+    line-height: 50px;
+  }
+
+  .weather-home--status-tempature-format{
+    display: flex;
+    align-items: end;
+
+  }
+
+  .weather-home--status-tempature-format-item{
+    border:1px solid #fff;
+    padding: 5px;
+    width: 20px;
+    cursor: pointer;
+
+    sup{
+      top: -2px;
+      position: relative;
+      font-size: 12px;
+    }
+    &.selected{
+      background: #fff;
+      color: #E32843;
+
+    }
+  }
+}
+
+.weather-home--status-description{
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.weather-home--details{
+  display: flex;
+  gap:40px;
+  justify-content: center;
+  overflow: auto;
+
+  .weather-home--details-item{
+    display: flex;
+    gap:15px;
+    margin: 40px 0;
+  }
+
+  .weather-home--details-item--content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .weather-home--details-item--content-value{
+      font-size: 22px;
+      font-weight: 400;
+      sup{
+        top: -2px;
+        position: relative;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .weather-home{
+    .weather-home--city{
+      text-align: center;
+    }
+
+    .weather-home--favourite{
+      justify-content: center;
+    }
+
+    .weather-home--status{
+      margin-top:60px ;
+    }
+
+    .weather-home--details{
+      justify-content:normal;
+      .weather-home--details-item--content-title,
+      .weather-home--details-item--content-value{
+        white-space: nowrap;
+      }
+
+    }
+
+    .weather-home--date{
+      justify-content: center;
+      font-size: 13px;
+      color: rgba(255,255, 255, .6);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+  }
+}

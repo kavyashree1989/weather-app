@@ -1,0 +1,7 @@
+<div class="favourite-list">
+  <div *ngIf="favourites.length" class="favourite-list--summary">
+    <div class="favourite-list--summary-count">{{favourites.length}} City added as favourite</div>
+    <a class="favourite-list--summary-action" (click)="onRemoveAll()">Remove All</a>
+  </div>
+  <weather-list message="No Favourite added" [favMap]="favMap" (favChange)="manageFavourite($event)"  [weatherList]="favourites"/>
+</div>

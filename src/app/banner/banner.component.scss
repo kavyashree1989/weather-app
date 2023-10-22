@@ -1,0 +1,54 @@
+.weather-banner{
+  display: flex;
+  align-items:center;
+  margin-bottom:40px;
+
+  .weather-banner--logo{
+    flex:1;
+  }
+
+  .weather-banner--search{
+    width:458px;
+    .mat-mdc-form-field{
+      width:100%;
+    }
+  }
+
+  .weather-banner--menu{
+    padding:0 20px 0 10px;
+    .mat-icon{
+      color:#fff;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .weather-banner{
+    padding: 15px 10px 15px 0;
+    .weather-banner--logo img{
+      height: 24px;
+    }
+
+    .weather-banner--search{
+      width:48px;
+      .mat-icon{
+        color:#fff;
+      }
+    }
+
+    &.weather-banner-back{
+      background-color: #fff;
+      color:#000;
+      .weather-banner--search,
+      .weather-banner--menu{
+        .mat-icon{
+          color:#000;
+        }
+      }
+    }
+
+    .weather-banner--logo-text{
+      font-size: 20px;
+    }
+  }
+}

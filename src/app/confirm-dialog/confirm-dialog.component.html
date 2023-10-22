@@ -1,0 +1,9 @@
+<div class="confirm-dialog--container">
+  <div class="confirm-dialog--content" mat-dialog-content>
+    {{message}}
+  </div>
+  <div class="confirm-dialog--action" mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close(false)">No</button>
+    <button mat-raised-button color="warn" (click)="dialogRef.close(true)">Yes</button>
+  </div>
+</div>

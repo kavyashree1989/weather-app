@@ -1,0 +1,32 @@
+<div  *ngIf="weatherList.length"  class="weather-list">
+  <div class="weather-list--item" [ngClass]="{'favourite': favMap[weather.city]}"  *ngFor="let weather of weatherList" (click)="routeToHome(weather)">
+        <div class="weather-list--item-city">
+          <div>{{weather.city}},  {{weather.country}}</div>
+          <div class="weather-list--additional desktop-hide mobile-flex">
+            <img [src]="iconMap[weather.icon]" />
+            <div class="weather-list--item-temp"><span class="weather-list--item-temp-text">{{getFormatedTemprature(weather.temprature)}}</span><sup>o</sup>C</div>
+            <div class="weather-list--item-description">{{weather.description | titlecase}}</div>
+          </div>
+        </div>
+        <div class="weather-list--item-icon mobile-hide">
+          <img [src]="iconMap[weather.icon]" />
+        </div>
+        <div class="weather-list--item-temp mobile-hide">
+          <span class="weather-list--item-temp-text">{{getFormatedTemprature(weather.temprature)}}</span><sup>o</sup>C
+        </div>
+        <div class="weather-list--item-description mobile-hide">
+          {{weather.description | titlecase}}
+        </div>
+        <div class="weather-list--item-fav" [ngClass]="{'selected': !!favMap[weather.city]}">
+          <button matSuffix mat-icon-button aria-label="favorite" (click)="onFavChange($event, weather)">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+  </div>
+</div>
+
+<div *ngIf="!weatherList.length" class="weather--no-data">
+  <img src="/assets/images/icon_nothing.png" alt="{message}"/>
+  <div>{{message}}</div>
+</div>
+

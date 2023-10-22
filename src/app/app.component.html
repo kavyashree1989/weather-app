@@ -1,0 +1,37 @@
+
+<mat-drawer-container class="weather-drawer--container" autosize>
+  <mat-drawer #drawer class="weather-sidenav" [ngClass]="{'weather-sidenav--full': drawerContext==='search'}" mode="over" >
+    <mat-list class="weather-drawer--menu" *ngIf="drawerContext==='menu'" role="list">
+      <mat-list-item [routerLink]="['/home']" (click)="drawer.close()" role="home">Home</mat-list-item>
+      <mat-list-item [routerLink]="['/favourite']" (click)="drawer.close()"  role="favourite">Favourite</mat-list-item>
+      <mat-list-item [routerLink]="['/recentsearch']" (click)="drawer.close()"  role="recent search">Recent Search</mat-list-item>
+    </mat-list>
+    <div class="weather-drawer--search" *ngIf="drawerContext==='search'">
+      <button  mat-icon-button aria-label="back" (click)="onBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <mat-form-field class="weather-drawer--search-field" appearance="outline">
+        <input matInput type="text" placeholder="Search city" [(ngModel)]="query" (keyup)="onKeyUp($event)">
+        <button matSuffix mat-icon-button aria-label="search" (click)="search()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-drawer>
+  <div class="weather-sidenav-content">
+    <div class="weather-app">
+      <weather-banner (drawerToggleChange)="onDrawerToggle($event)"></weather-banner>
+      <div class="weather-tab--container mobile-hide">
+        <div class="weather-today--date">{{dateTimeNow | date:'fullDate'  }}<span class="weather-today--time">{{dateTimeNow | date:'h:mm a'}}</span></div>
+        <mat-tab-group [selectedIndex]="selectedTabIndex" class="weather-tab" mat-stretch-tabs="false" mat-align-tabs="start" (selectedIndexChange)="onTabChange($event)">
+          <mat-tab label="HOME" />
+          <mat-tab label="FAVOURITE"/>
+          <mat-tab label="RECENT SEARCH"/>
+        </mat-tab-group>
+      </div>
+      <div class="weather--container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
